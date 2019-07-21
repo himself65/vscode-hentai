@@ -13,7 +13,9 @@
     ],
     "sourceMap": true,
     "rootDir": "src",
-    "strict": true
+    "strict": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true
   },
   "exclude": [
     "node_modules",
