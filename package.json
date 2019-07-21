@@ -1,0 +1,39 @@
+{
+  "name": "vscode-hentai",
+  "displayName": "vscode-hentai",
+  "description": "code and display hentai image",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.36.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.helloWorld"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.hentai",
+        "title": "Start or Stop hentai images support"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/node": "^12.6.8",
+    "@types/vscode": "^1.36.0",
+    "tslint": "^5.12.1",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.3.1",
+    "vscode-test": "^1.0.0-next.0"
+  }
+}
