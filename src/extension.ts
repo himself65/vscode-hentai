@@ -1,5 +1,5 @@
 import * as vscode from 'vscode'
-import { displayName as moduleName } from '../package.json'
+export const moduleName = 'vscode-hentai'
 
 export function activate (context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand('extension.helloWorld', () => {
