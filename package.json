@@ -3,14 +3,23 @@
   "displayName": "vscode-hentai",
   "description": "code and display hentai image",
   "version": "0.1.0",
+  "bugs": {
+    "url": "https://github.com/Himself65/vscode-hentai/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Himself65/vscode-hentai.git"
+  },
+  "homepage": "https://github.com/Himself65/vscode-hentai",
   "engines": {
     "vscode": "^1.36.0"
   },
   "categories": [
+    "Themes",
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.helloWorld"
+    "*"
   ],
   "main": "./dist/extension.js",
   "configuration": {
