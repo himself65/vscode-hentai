@@ -13,13 +13,15 @@
     "onCommand:extension.helloWorld"
   ],
   "main": "./dist/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "extension.hentai",
-        "title": "Start or Stop hentai images support"
+  "configuration": {
+    "title": "Hentai Mode",
+    "properties": {
+      "hentai.enabled": {
+        "default": false,
+        "type": "boolean",
+        "description": "Enable to activate Hentai MODE!!!"
       }
-    ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",
