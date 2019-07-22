@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events'
 
 export function On (name: string | symbol, event: (...args: any[]) => void) {
-  return function <T extends { new (...args: any[]): {} }, U extends EventEmitter> (constructor: T): any {
+  return function <T extends { new (...args: any[]): {} }> (constructor: T): any {
     const newConstr = function (this: EventEmitter, ...args: any[]) {
       const F: any = function () {
         return new constructor(args)
