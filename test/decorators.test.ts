@@ -1,5 +1,5 @@
 import { EventEmitter } from 'events'
-import { On } from '../src/utils'
+import { On } from '../src/utils/decorators'
 
 describe('Decorators Test', () => {
   it('Decorator - @On', () => {
@@ -24,6 +24,17 @@ describe('Decorators Test', () => {
       const obj = { foo: 1 }
       A.call(obj)
       expect(obj.foo).toBe(1)
+    }
+    {
+      expect(() => {
+        // tslint:disable-next-line:no-empty
+        @On('foo', () => {})
+        class B {
+
+        }
+        // tslint:disable-next-line:no-unused-expression
+        new B()
+      }).toThrowError(Error('class is not instance of EventEmitter'))
     }
   })
 })
