@@ -29,6 +29,11 @@
         "default": false,
         "type": "boolean",
         "description": "Enable to activate Hentai MODE!!!"
+      },
+      "hentai.keywords": {
+        "default": "saber",
+        "type": "string",
+        "description": "Keywords which the images will be"
       }
     }
   },
@@ -40,8 +45,10 @@
     "test": "cross-env NODE_ENV=test jest -i"
   },
   "devDependencies": {
+    "@types/express": "^4.17.0",
     "@types/jest": "^24.0.15",
     "@types/node": "^12.6.8",
+    "@types/supertest": "^2.0.8",
     "@types/vscode": "^1.36.0",
     "cross-env": "^5.2.0",
     "eslint": "^6.1.0",
@@ -50,8 +57,10 @@
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
+    "express": "^4.17.1",
     "jest": "^24.8.0",
     "jest-serializer-html": "^7.0.0",
+    "supertest": "^4.0.2",
     "ts-jest": "^24.0.2",
     "tslint": "^5.12.1",
     "tslint-config-standard": "^8.0.1",
@@ -59,6 +68,7 @@
     "vscode-test": "^1.0.0-next.0"
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "rxjs": "^6.5.2"
   }
 }
