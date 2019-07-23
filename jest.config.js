@@ -6,7 +6,8 @@ module.exports = {
   ],
   moduleFileExtensions: [
     'ts',
-    'js'
+    'js',
+    'json'
   ],
   moduleDirectories: [
     'node_modules'
@@ -29,7 +30,8 @@ module.exports = {
   ],
   globals: {
     'ts-jest': {
-      babelConfig: true
+      babelConfig: true,
+      allowJs: true
     }
   }
 }
