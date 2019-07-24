@@ -17,4 +17,5 @@ function Lazy (key: string): any {
   }
 }
 
-export const isHentaiMode = (): boolean => !!Lazy('enabled')
+export const hentaiKeywords = (): string => Lazy('hentai.keywords')
+export const isHentaiMode = (): boolean => !!Lazy('hentai.enabled')
