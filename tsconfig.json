@@ -15,6 +15,8 @@
     "rootDir": "src",
     "strict": true,
     "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },
   "exclude": [

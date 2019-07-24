@@ -1,5 +1,6 @@
 import { EventEmitter } from 'events'
-import { hentaiKeywords, On } from './utils'
+import Storage from './storage'
+import { On } from './utils'
 import { getImages, TInfoItem } from './utils/api'
 
 @On('update', async (instance: ImageSaver) => instance.update())
@@ -9,11 +10,11 @@ class ImageSaver extends EventEmitter {
   public ImagesUrls?: string[]
 
   public async update () {
-    const { message, items } = await getImages(hentaiKeywords(), this.page)
-    // fixme: alert to show message
+    const { message, items } = await getImages(Storage.hentaiKeywords(), this.page)
     if (items != null) {
       this.lastInfo = items
     }
+    this.emit('update', message)
   }
 }
 
@@ -21,8 +22,10 @@ class ImageSaver extends EventEmitter {
   // todo
 })
 export class Hentai extends EventEmitter {
+  private imageSaver = new ImageSaver()
   constructor () {
     super()
+    this.imageSaver.on('update', () => this.emit('image_update', ...arguments))
   }
 }
 
