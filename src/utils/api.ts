@@ -32,7 +32,7 @@ export type TInfoItem = {
   }[]
 }
 
-export function getImages (keywords: string, page = 0) {
+export async function getImages (keywords: string, page = 0) {
   return Axios.get(fetchUrl, {
     params: {
       keywords,
