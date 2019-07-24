@@ -41,6 +41,10 @@ class Storage extends EventEmitter {
     }
   }
 
+  public save (...args: [() => any, any]) {
+    return this.Save(...args)
+  }
+
   public Save (target: () => any, value: any): void {
     const key = Reflect.getMetadata(SAVE_KEY, target)
     if (typeof this.lazyObj[key] !== typeof value) {
