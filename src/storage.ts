@@ -33,7 +33,7 @@ class Storage extends EventEmitter {
     })
   }
 
-  public Lazy (key: string): any {
+  private Lazy (key: string): any {
     if (this.lazyObj[key]) {
       return this.lazyObj[key]
     } else {
