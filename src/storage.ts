@@ -37,7 +37,7 @@ class Storage extends EventEmitter {
     if (this.lazyObj[key]) {
       return this.lazyObj[key]
     } else {
-      this.lazyObj[key] = !!workspace.getConfiguration().get(key)
+      this.lazyObj[key] = workspace.getConfiguration().get(key)
     }
   }
 
