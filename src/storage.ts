@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events'
 import 'reflect-metadata'
 import { workspace } from 'vscode'
-import { configurationObserver } from './extension'
+import { configurationObserver } from './utils'
 
 const SAVE_KEY = Symbol('SAVE_KEY')
 
@@ -20,8 +20,7 @@ class Storage extends EventEmitter {
 
   private lazyObj: { [key: string]: any } = {}
 
-  constructor () {
-    super()
+  public init (): void {
     configurationObserver.subscribe(() => {
       for (const key in this.lazyObj) {
         const value = workspace.getConfiguration().get(key)
@@ -58,6 +57,7 @@ class Storage extends EventEmitter {
 const storage = new Storage()
 
 export = {
+  register: storage.init,
   style: storage.style,
   coolingTime: storage.coolingTime,
   hentaiKeywords: storage.hentaiKeywords,

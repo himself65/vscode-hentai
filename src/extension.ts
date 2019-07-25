@@ -1,21 +1,14 @@
-import { Observable } from 'rxjs'
-import { debounceTime, throttleTime } from 'rxjs/operators'
-import { ConfigurationChangeEvent, ExtensionContext, TextDocumentChangeEvent, workspace } from 'vscode'
+import { debounceTime } from 'rxjs/operators'
+import { ExtensionContext } from 'vscode'
 import hentaiInstance from './hentai'
 import Storage from './storage'
+import { textChangeObserver } from './utils'
 
 export const moduleName = 'vscode-hentai'
 
-export let textChangeObserver: Observable<TextDocumentChangeEvent>
-export let configurationObserver: Observable<ConfigurationChangeEvent>
-
 export function activate (context: ExtensionContext) {
-  textChangeObserver = new Observable<TextDocumentChangeEvent>(subscriber => {
-    workspace.onDidChangeTextDocument((event) => subscriber.next(event))
-  }).pipe(debounceTime(Storage.coolingTime() * 1000))
-  configurationObserver = new Observable<ConfigurationChangeEvent>(subscriber => {
-    workspace.onDidChangeConfiguration(event => subscriber.next(event))
-  }).pipe(throttleTime(5000))
+  Storage.register()
+  textChangeObserver.pipe(debounceTime(Storage.coolingTime() * 60 * 1000))
 
   textChangeObserver.subscribe(function onDidChangeTextDocument (event) {
     // todo
