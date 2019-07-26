@@ -21,11 +21,11 @@
     "moduleResolution": "node"
   },
   "include": [
-    "src/**/*",
-    "test/**/*"
+    "src/**/*"
   ],
   "exclude": [
     "dist",
+    "test",
     "mock",
     "build",
     "node_modules"

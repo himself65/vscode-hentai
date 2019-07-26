@@ -1,40 +1,46 @@
+import * as assert from 'assert'
 import { EventEmitter } from 'events'
 import { On } from '../src/utils/decorators'
 
-describe('Decorators Test', () => {
-  it('Decorator - @On', () => {
+suite('Decorators Test', () => {
+  test('Decorator - @On', () => {
     let a = false
+
     @On('foo', () => a = true)
     class A extends EventEmitter {
       public foo = 1
       public goo = false
+
       constructor () {
         super()
         this.goo = true
       }
     }
+
     {
       const obj = new A()
-      expect(obj.foo).toBe(1)
-      expect(obj.goo).toBe(true)
+      assert.strictEqual(obj.foo, 1)
+      assert.strictEqual(obj.goo, true)
       obj.emit('foo')
-      expect(a).toBe(true)
+      assert.strictEqual(a, true)
     }
     {
       const obj = { foo: 1 }
       A.call(obj)
-      expect(obj.foo).toBe(1)
+      assert.strictEqual(obj.foo, 1)
     }
     {
-      expect(() => {
+      assert.throws(() => {
         // tslint:disable-next-line:no-empty
-        @On('foo', () => {})
+        @On('foo', () => {
+        })
         class B {
 
         }
+
         // tslint:disable-next-line:no-unused-expression
         new B()
-      }).toThrowError(Error('class is not instance of EventEmitter'))
+      }, Error('class is not instance of EventEmitter'))
     }
   })
 })

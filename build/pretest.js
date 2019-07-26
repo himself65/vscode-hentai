@@ -14,7 +14,7 @@ const tasks = []
 
 function preBuild (dir) {
   fs.readdirSync(dir).forEach(file => {
-    if (/.eslintrc/.test(file)) return
+    if (/^\.eslintrc/.test(file)) return
 
     const filePath = path.join(dir, file)
     if (fs.statSync(filePath).isDirectory()) {
@@ -38,7 +38,7 @@ function preBuild (dir) {
             tsconfig: path.resolve(root, 'tsconfig.json')
           })
         ],
-        external: ['vscode', 'supertest', 'jest']
+        external: ['vscode', 'supertest', 'jest', 'glob', 'mocha']
       })
     }
   })
@@ -52,4 +52,5 @@ preBuild(testRoot);
       bundle.write(task.output)
     })
   }
+  // fs.copyFileSync(path.join(testRoot, 'index.js'), path.join(outputDir, 'index.js'))
 })()
