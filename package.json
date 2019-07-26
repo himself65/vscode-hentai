@@ -60,18 +60,16 @@
   "scripts": {
     "vscode:prepublish": "yarn run build",
     "build": "rimraf dist && cross-env NODE_ENV=production rollup -c ./build/rollup.config.js",
-    "watch": "yarn build --watch",
-    "pretest": "yarn run compile",
-    "test": "cross-env NODE_ENV=test jest -i",
-    "test:ci": "tsc -p ./tsconfig.test.json"
+    "pretest": "babel-node ./build/pretest.js",
+    "test": "cross-env NODE_ENV=test node ./out/index.js"
   },
   "devDependencies": {
+    "@babel/node": "^7.5.5",
     "@types/express": "^4.17.0",
     "@types/jest": "^24.0.15",
     "@types/node": "^12.6.8",
     "@types/supertest": "^2.0.8",
     "@types/vscode": "^1.36.0",
-    "babel-loader": "^8.0.6",
     "cross-env": "^5.2.0",
     "eslint": "^6.1.0",
     "eslint-config-standard": "^13.0.1",
