@@ -25,5 +25,5 @@ export default {
       tsconfig: path.resolve(root, 'tsconfig.json')
     })
   ],
-  external: ['vscode']
+  external: (id) => [/^vscode/, /^axios/, /^rxjs/, /^reflect-metadata/].some(r => r.test(id))
 }
