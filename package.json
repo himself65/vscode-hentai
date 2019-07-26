@@ -58,11 +58,12 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "yarn run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "yarn run build",
+    "build": "rimraf dist && cross-env NODE_ENV=production rollup -c ./build/rollup.config.js",
+    "watch": "yarn build --watch",
     "pretest": "yarn run compile",
-    "test": "cross-env NODE_ENV=test jest -i"
+    "test": "cross-env NODE_ENV=test jest -i",
+    "test:ci": "tsc -p ./tsconfig.test.json"
   },
   "devDependencies": {
     "@types/express": "^4.17.0",
@@ -70,6 +71,7 @@
     "@types/node": "^12.6.8",
     "@types/supertest": "^2.0.8",
     "@types/vscode": "^1.36.0",
+    "babel-loader": "^8.0.6",
     "cross-env": "^5.2.0",
     "eslint": "^6.1.0",
     "eslint-config-standard": "^13.0.1",
@@ -80,12 +82,17 @@
     "express": "^4.17.1",
     "jest": "^24.8.0",
     "jest-serializer-html": "^7.0.0",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.17.0",
+    "rollup-plugin-commonjs": "^10.0.1",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-typescript": "^1.0.1",
     "supertest": "^4.0.2",
     "ts-jest": "^24.0.2",
     "tslint": "^5.12.1",
     "tslint-config-standard": "^8.0.1",
-    "typescript": "^3.3.1",
-    "vscode-test": "^1.0.0-next.0"
+    "typescript": "^3.3.1"
   },
   "dependencies": {
     "axios": "^0.19.0",

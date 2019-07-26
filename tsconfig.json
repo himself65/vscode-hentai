@@ -12,16 +12,22 @@
       "es2019"
     ],
     "sourceMap": true,
-    "rootDir": "src",
     "strict": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "removeComments": true,
+    "moduleResolution": "node"
   },
+  "include": [
+    "src/**/*",
+    "test/**/*"
+  ],
   "exclude": [
-    "node_modules",
-    ".vscode-test",
-    "test"
+    "dist",
+    "mock",
+    "build",
+    "node_modules"
   ]
 }
