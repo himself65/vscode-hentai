@@ -56,7 +56,7 @@ class Storage extends EventEmitter {
 
 const storage = new Storage()
 
-export = {
+export default {
   register: storage.init,
   style: storage.style,
   coolingTime: storage.coolingTime,
