@@ -61,5 +61,6 @@ export default {
   style: storage.style,
   coolingTime: storage.coolingTime,
   hentaiKeywords: storage.hentaiKeywords,
-  isHentaiMode: storage.isHentaiMode
+  isHentaiMode: storage.isHentaiMode,
+  useFront: () => false
 }

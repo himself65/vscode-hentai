@@ -9,12 +9,25 @@ class ImageSaver extends EventEmitter {
   private page: number = 0
   public ImagesUrls?: string[]
 
+  private getImgUrls (): string[] | string {
+    if (this.lastInfo == null) {
+      return ''
+    }
+
+    return this.lastInfo
+      .splice(0, 3)
+      .map(item => `https://img.pixivic.com:23334/get/${item.meta_single_page.original_image_url}`)
+  }
+
   public async update () {
+    if (this.lastInfo != null && this.lastInfo.length > 0) {
+      return
+    }
     const { message, items } = await getImages(Storage.hentaiKeywords(), this.page)
     if (items != null) {
       this.lastInfo = items
     }
-    this.emit('update', message)
+    this.emit('update', message, this.getImgUrls())
   }
 }
 
