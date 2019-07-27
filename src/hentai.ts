@@ -6,9 +6,8 @@ import { getImages, TInfoItem } from './utils/api'
 class ImageSaver extends EventEmitter {
   private lastInfo?: TInfoItem[]
   private page: number = 0
-  public ImagesUrls?: string[]
 
-  private getImgUrls (): string[] | string {
+  get imgUrls (): string | string[] {
     if (this.lastInfo == null) {
       return ''
     }
@@ -20,14 +19,14 @@ class ImageSaver extends EventEmitter {
 
   public async update () {
     if (this.lastInfo != null && this.lastInfo.length > 0) {
-      this.emit('update', '加载完成', this.getImgUrls())
+      this.emit('update', '加载完成', this.imgUrls)
       return
     }
     const { message, items } = await getImages(Storage.hentaiKeywords(), this.page)
     if (items != null) {
       this.lastInfo = items
     }
-    this.emit('update', message, this.getImgUrls())
+    this.emit('update', message, this.imgUrls)
   }
 }
 
