@@ -3,7 +3,6 @@ import Storage from './storage'
 import { On } from './utils'
 import { getImages, TInfoItem } from './utils/api'
 
-@On('update', async (instance: ImageSaver) => instance.update())
 class ImageSaver extends EventEmitter {
   private lastInfo?: TInfoItem[]
   private page: number = 0
