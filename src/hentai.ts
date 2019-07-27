@@ -21,6 +21,7 @@ class ImageSaver extends EventEmitter {
 
   public async update () {
     if (this.lastInfo != null && this.lastInfo.length > 0) {
+      this.emit('update', '加载完成', this.getImgUrls())
       return
     }
     const { message, items } = await getImages(Storage.hentaiKeywords(), this.page)
