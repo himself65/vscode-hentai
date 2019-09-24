@@ -11,6 +11,7 @@
     "url": "https://github.com/Himself65/vscode-hentai.git"
   },
   "homepage": "https://github.com/Himself65/vscode-hentai",
+  "publisher": "himself6565",
   "engines": {
     "vscode": "^1.36.0"
   },
