@@ -13,7 +13,7 @@
   "homepage": "https://github.com/Himself65/vscode-hentai",
   "publisher": "himself6565",
   "engines": {
-    "vscode": "^1.36.0"
+    "vscode": "^1.38.0"
   },
   "categories": [
     "Themes",
